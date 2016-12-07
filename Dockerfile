@@ -7,6 +7,8 @@ RUN apk add --no-cache --virtual build-dependencies \
   && curl -o /usr/local/bin/stout https://github.com/EagerIO/Stout/releases/download/v$STOUT_VERSION/stout-linux \
   && apk del build-dependencies
 
+RUN chmod u+x /usr/local/bin/stout
+
 COPY entrypoint.sh /
 
 ENTRYPOINT ["/entrypoint.sh"]
