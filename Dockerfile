@@ -16,4 +16,4 @@ RUN apk add --no-cache --virtual build-dependencies \
 COPY entrypoint.sh /
 
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["--help"]
+CMD ["help"]
