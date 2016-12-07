@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-ENV STOUT_VERSION=1.2.3
+ARG STOUT_VERSION=1.2.3
 
 RUN apk add --no-cache --virtual build-dependencies \
     curl \
