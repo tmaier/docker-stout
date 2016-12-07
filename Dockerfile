@@ -1,13 +1,17 @@
 FROM alpine:latest
 
-ARG STOUT_VERSION=1.2.3
-
+ARG GOPATH=/mygo
 RUN apk add --no-cache --virtual build-dependencies \
     curl \
-  && curl -o /usr/local/bin/stout https://github.com/EagerIO/Stout/releases/download/v$STOUT_VERSION/stout-linux \
-  && apk del build-dependencies
-
-RUN chmod u+x /usr/local/bin/stout
+	git \
+	go \
+  && mkdir /mygo \
+  && go get github.com/tools/godep \
+  && git clone https://github.com/EagerIO/Stout.git /mygo/src/Stout \
+  && cd /mygo/src/Stout \
+  && /mygo/bin/godep go build -o /usr/local/bin/stout /mygo/src/Stout/src/*.go \
+  && apk del build-dependencies \
+  && rm -rf /mygo
 
 COPY entrypoint.sh /
 
