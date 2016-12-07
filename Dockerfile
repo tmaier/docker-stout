@@ -3,7 +3,7 @@ FROM alpine:latest
 ENV STOUT_VERSION=1.2.3
 
 RUN apk add --no-cache --virtual build-dependencies \
-  curl \
+    curl \
   && curl -o stout https://github.com/EagerIO/Stout/releases/download/v$STOUT_VERSION/stout-linux \
   && apk del build-dependencies
 
