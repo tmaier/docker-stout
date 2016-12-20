@@ -1,5 +1,7 @@
 FROM alpine:latest
 
+RUN apk add --no-cache ca-certificates
+
 ARG GOPATH=/mygo
 RUN apk add --no-cache --virtual build-dependencies \
     curl \
